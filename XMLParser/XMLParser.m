@@ -32,6 +32,16 @@ BOOL NSStringEqualsXMLNullString(NSString *string);
 #pragma mark - Implementation
 @implementation XMLParser
 
+- (XMLParser *)shareXmlParser
+{
+    static XMLParser *shareXml = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareXml = [[XMLParser alloc]init];
+    });
+    return shareXml;
+}
+
 #pragma mark Properties
 - (void)setParser:(NSXMLParser *)parser {
 	if (![_parser isEqual:parser]) {

@@ -10,6 +10,8 @@
 
 @interface XMLParser : NSObject
 
+- (XMLParser *)shareXmlParser;
+
 /** @name Parsing Methods */
 #pragma mark - Parsing Methods
 - (void)parseData:(NSData *)data success:(void (^)(id parsedData))success failure:(void (^)(NSError *error))failure;
